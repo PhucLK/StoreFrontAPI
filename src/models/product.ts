@@ -1,7 +1,7 @@
 import client from '../database/index'
 
 type Product = {
-    id : string,
+    id : number,
     name: string,
     price: number,
     category: string

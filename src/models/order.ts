@@ -1,4 +1,3 @@
-// @ts-ignore
 import client from '../database/index'
 
 type Order = {

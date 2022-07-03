@@ -25,7 +25,7 @@ const show = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
     try {
-        const user: User = {
+        const user: Partial<User> = {
             username: req.body.username,
             password: req.body.password,
         }

@@ -27,7 +27,7 @@ const product: Partial<Product> = {
     category: 'Katherine Paterson',
 }
 const newProduct: Product = {
-    id: '1',
+    id: 1,
     name: 'Bridge to Terabithia',
     price: 250,
     category: 'Katherine Paterson',
@@ -35,11 +35,14 @@ const newProduct: Product = {
 
 describe("Product Model", () => {
 
-    // beforeAll(() => {
-    //     store.create(product)
-    //     userStore.create(user)
-    //     orderStore.
-    // });
+    beforeAll(() => {
+        console.log('All----------');
+    });
+
+    beforeEach(function () {
+        console.log('each----------');
+        
+    });
 
 
     it('should have an index method', () => {
@@ -54,11 +57,11 @@ describe("Product Model", () => {
         expect(store.create).toBeDefined();
     });
 
-    it('should return list of popular Products', () => {
+    it('should have a popularProducts method', () => {
         expect(store.popularProducts).toBeDefined();
     });
 
-    it('should return list of popular Products by category', () => {
+    it('should have a productByCategory method', () => {
         expect(store.productByCategory).toBeDefined();
     });
 
@@ -77,6 +80,9 @@ describe("Product Model", () => {
     });
     it('method should return list of popular products', async () => {
         const result = await store.popularProducts();
+        console.log('result====>');
+        console.log(result);
+        
         expect(result).toEqual([newProduct]);
     });
     it('method should return list of product by category', async () => {

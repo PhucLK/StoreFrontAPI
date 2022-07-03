@@ -5,4 +5,3 @@ orders(id serial primary key,
     product_id int REFERENCES products(id),
     user_id int REFERENCES users(id)
 )
-

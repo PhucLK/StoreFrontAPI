@@ -6,6 +6,7 @@ const pepper = 'sfdsdf'
 const saltRounds = '10'
 
 type User = {
+  id: number,
   username: string,
   password: string
 }
