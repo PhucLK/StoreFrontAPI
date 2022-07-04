@@ -53,11 +53,11 @@ class ProductStore {
         }
     }
 
-     async popularProducts(): Promise<Product[]> {
+     async popularProducts(): Promise<Object[]> {
         try {
-            const sql = 'select p.name,p.price,p.category,count(o.id) as order_quantity '
-                + 'from products as p inner join orders o '
-                + 'on p.id=o.product_id group by p.id order by count(o.id) desc limit 5'
+            const sql = 'select p.name,p.price,p.category,sum(o.quantity) as order_quantity'
+            +' from products as p inner join orders o '
+            +'on p.id=o.product_id group by p.id order by sum(o.quantity) desc limit 5'
             // @ts-ignore
             const conn = await client.connect()
             const result = await conn.query(sql)

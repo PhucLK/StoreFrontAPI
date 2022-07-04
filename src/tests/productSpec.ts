@@ -1,48 +1,71 @@
 import { Product, ProductStore } from '../models/product';
-import { Order, OrderStore } from '../models/order';
-import { User, UserStore } from '../models/user';
-
-
-const orderStore = new OrderStore()
 const store = new ProductStore()
-const userStore = new UserStore()
 
-const order: Partial<Order> = {
-    product_id: '1',
-    quantity: 1,
-    status: 'completed',
-    user_id: '1'
-}
-
-const user: Partial<User> = {
-    username: 'phuc',
-    password: 'phuc123'
-}
-
-
+const products: Product[] = [
+    { id: 1, name: 'Summer 1', price: 450, category: 'Shirt' },
+    { id: 2, name: 'Summer 2', price: 450, category: 'Shirt' },
+    { id: 3, name: 'Summer 3', price: 450, category: 'Shirt' },
+    { id: 4, name: 'Summer 4', price: 450, category: 'Shirt' },
+    { id: 5, name: 'Summer 5', price: 450, category: 'Shirt' },
+    { id: 6, name: 'Summer 6', price: 450, category: 'Shirt' }
+]
+const popularProductList : Object[] = [
+    {
+        name: 'Summer 5',
+        price: 450,
+        category: 'Shirt',
+        order_quantity: '10'
+    },
+    {
+        name: 'Summer 6',
+        price: 450,
+        category: 'Shirt',
+        order_quantity: '6'
+    },
+    {
+        name: 'Summer 4',
+        price: 450,
+        category: 'Shirt',
+        order_quantity: '4'
+    },
+    {
+        name: 'Summer 3',
+        price: 450,
+        category: 'Shirt',
+        order_quantity: '3'
+    },
+    {
+        name: 'Summer 2',
+        price: 450,
+        category: 'Shirt',
+        order_quantity: '2'
+    }
+]
 
 const product: Partial<Product> = {
-    name: 'Bridge to Terabithia',
-    price: 250,
-    category: 'Katherine Paterson',
+    name: 'Summer 1',
+    price: 450,
+    category: 'Shirt'
 }
 const newProduct: Product = {
-    id: 1,
-    name: 'Bridge to Terabithia',
-    price: 250,
-    category: 'Katherine Paterson',
+    id: 7,
+    name: 'Summer 1',
+    price: 450,
+    category: 'Shirt',
 }
 
 describe("Product Model", () => {
 
-    beforeAll(() => {
-        console.log('All----------');
-    });
+    // beforeAll( async () => {
+    //     await store.create(product);
+    //     //await OrderStore.(user);
+    //     await store.create(product);
+    // });
 
-    beforeEach(function () {
-        console.log('each----------');
-        
-    });
+    // beforeEach(function () {
+    //     console.log('each----------');
+
+    // });
 
 
     it('should have an index method', () => {
@@ -72,22 +95,19 @@ describe("Product Model", () => {
 
     it('method should return list of products', async () => {
         const result = await store.index();
-        expect(result).toEqual([newProduct]);
+        expect(result).toEqual([...products, newProduct]);
     });
     it('method should return a detail product', async () => {
-        const result = await store.show('1');
+        const result = await store.show('7');
         expect(result).toEqual(newProduct);
     });
     it('method should return list of popular products', async () => {
         const result = await store.popularProducts();
-        console.log('result====>');
-        console.log(result);
-        
-        expect(result).toEqual([newProduct]);
+        expect(result).toEqual(popularProductList);
     });
     it('method should return list of product by category', async () => {
-        const result = await store.productByCategory('New');
-        expect(result).toEqual([newProduct]);
+        const result = await store.productByCategory('Shirt');
+        expect(result).toEqual([...products, newProduct]);
     });
 
 });

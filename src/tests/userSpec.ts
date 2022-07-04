@@ -1,8 +1,9 @@
-import { UserStore } from '../models/user';
+import { User, UserStore } from '../models/user';
 
 const store = new UserStore()
 
-const user = {
+const user: User = {
+    id: 1,
     username: 'phuc',
     password: 'phuc123',
 }
@@ -22,21 +23,19 @@ describe("User Model", () => {
     });
 
     it('create method should create a user', async () => {
-
         const [newUser, token] = await store.create(user);
-        //expect(result).toEqual(user);
+        expect(newUser.username).toEqual(user.username);
+        expect(token).not.toEqual('');
     });
 
     it('should return list of user', async () => {
-
         const result = await store.index();
-        //expect(result).toEqual(user);
+        expect(result[0].username).toEqual(user.username);
     });
 
     it('should return a detail user', async () => {
-
         const result = await store.show('1');
-        //expect(result).toEqual(product);
+        expect(result).toEqual(user);
     });
 
 });
