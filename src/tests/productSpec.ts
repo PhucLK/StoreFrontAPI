@@ -1,4 +1,4 @@
-import { Product, ProductStore } from '../models/product';
+import { Product, ProductStore } from '../models/product'
 const store = new ProductStore()
 
 const products: Product[] = [
@@ -9,7 +9,7 @@ const products: Product[] = [
     { id: 5, name: 'Summer 5', price: 450, category: 'Shirt' },
     { id: 6, name: 'Summer 6', price: 450, category: 'Shirt' }
 ]
-const popularProductList : Object[] = [
+const popularProductList: Object[] = [
     {
         name: 'Summer 5',
         price: 450,
@@ -51,64 +51,50 @@ const newProduct: Product = {
     id: 7,
     name: 'Summer 1',
     price: 450,
-    category: 'Shirt',
+    category: 'Shirt'
 }
 
-describe("Product Model", () => {
-
-    // beforeAll( async () => {
-    //     await store.create(product);
-    //     //await OrderStore.(user);
-    //     await store.create(product);
-    // });
-
-    // beforeEach(function () {
-    //     console.log('each----------');
-
-    // });
-
+describe('Product Model', () => {
 
     it('should have an index method', () => {
-        expect(store.index).toBeDefined();
-    });
+        expect(store.index).toBeDefined()
+    })
 
     it('should have a show method', () => {
-        expect(store.show).toBeDefined();
-    });
+        expect(store.show).toBeDefined()
+    })
 
     it('should have a create method', () => {
-        expect(store.create).toBeDefined();
-    });
+        expect(store.create).toBeDefined()
+    })
 
     it('should have a popularProducts method', () => {
-        expect(store.popularProducts).toBeDefined();
-    });
+        expect(store.popularProducts).toBeDefined()
+    })
 
     it('should have a productByCategory method', () => {
-        expect(store.productByCategory).toBeDefined();
-    });
+        expect(store.productByCategory).toBeDefined()
+    })
 
     it('create method should add a product', async () => {
-        const result = await store.create(product);
-        expect(result).toEqual(newProduct);
-    });
+        const result = await store.create(product)
+        expect(result).toEqual(newProduct)
+    })
 
     it('method should return list of products', async () => {
-        const result = await store.index();
-        expect(result).toEqual([...products, newProduct]);
-    });
+        const result = await store.index()
+        expect(result).toEqual([...products, newProduct])
+    })
     it('method should return a detail product', async () => {
-        const result = await store.show('7');
-        expect(result).toEqual(newProduct);
-    });
+        const result = await store.show('7')
+        expect(result).toEqual(newProduct)
+    })
     it('method should return list of popular products', async () => {
-        const result = await store.popularProducts();
-        expect(result).toEqual(popularProductList);
-    });
+        const result = await store.popularProducts()
+        expect(result).toEqual(popularProductList)
+    })
     it('method should return list of product by category', async () => {
-        const result = await store.productByCategory('Shirt');
-        expect(result).toEqual([...products, newProduct]);
-    });
-
-});
-
+        const result = await store.productByCategory('Shirt')
+        expect(result).toEqual([...products, newProduct])
+    })
+})

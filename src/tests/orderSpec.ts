@@ -1,5 +1,4 @@
-import { Order, OrderStore } from '../models/order';
-
+import { Order, OrderStore } from '../models/order'
 
 const store = new OrderStore()
 
@@ -65,25 +64,22 @@ const completedOrder: Order[] = [
     }
 ]
 
-
-describe("Order Model", () => {
+describe('Order Model', () => {
     it('should have an orderByUser method', () => {
-        expect(store.orderByUser).toBeDefined();
-    });
+        expect(store.orderByUser).toBeDefined()
+    })
 
     it('should have a completedOrders method', () => {
-        expect(store.completedOrders).toBeDefined();
-    });
+        expect(store.completedOrders).toBeDefined()
+    })
 
     it('orderByUser method should return a list of orders by user', async () => {
-        const result = await store.orderByUser(1);
-        expect(result).toEqual(completedOrder);
-    });
+        const result = await store.orderByUser(1)
+        expect(result).toEqual(completedOrder)
+    })
 
-    it('completedOrders method should return list of completed orders', async () => {
-        const result = await store.completedOrders('completed', 1);
-        expect(result).toEqual(completedOrder);
-    });
-
-});
-
+    it('completedOrders method should return list of completed orders by user', async () => {
+        const result = await store.completedOrders(1)
+        expect(result).toEqual(completedOrder)
+    })
+})

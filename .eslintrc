@@ -9,7 +9,7 @@
     },
 
     "rules": {
-        "quotes": ["error", "double"],
+        "quotes": ["error", "single"],
         "semi": ["off", "always"],
         "indent": "off",
         "comma-dangle": ["error", "never"],
