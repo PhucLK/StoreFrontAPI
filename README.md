@@ -6,36 +6,42 @@ In the project directory, you can run:
 
 ### `npm run start`
 
-Start application
+#### Start application
 
 ### `npm run test`
 
-Test products enpoint and funtionalities
-Test orders enpoint and funtionalities
-Test users enpoint and funtionalities
+#### Test products enpoint and funtionalities
+
+#### Test orders enpoint and funtionalities
+
+#### Test users enpoint and funtionalities
 
 ### `npm run build`
 
-Builds the app for production to the `build` folder
-Complie all .ts file to .js file
+#### Builds the app for production to the `build` folder
+
+#### Complie all .ts file to .js file
 
 ### `npm run lint`
 
-Making code more consistent and avoiding bugs.
+#### Making code more consistent and avoiding bugs.
 
 ### `npm run prettier`
 
-Formatting \*.ts files in project
+#### Formatting \*.ts files in project
 
 ### `npm run allin`
 
-Formating file , build and testing
+#### Formating file , build and testing
 
 ## Database setup
 
 #### create database store_dev;
+
 #### create user phuc with password 'phuc123';
+
 #### grant all privileges on database store_dev to phuc;
+
 #### grant all privileges on database store_test to phuc;
 
 ## products table
@@ -76,14 +82,21 @@ quantity int
 
 ## Environment
 
-#### POSTGRES_HOST=localhost
-#### POSTGRES_DB=store_dev
-#### POSTGRES_USER=phuc
-#### POSTGRES_PASSWORD=phuc123
-#### POSTGRES_TEST_DB=store_test
-#### ENV=dev
-#### DB_PORT=5432
-#### TOKEN_SECRET=jsdiurwejsbb34534sfnf
+##### POSTGRES_HOST=localhost
+
+##### POSTGRES_DB=store_dev
+
+##### POSTGRES_USER=phuc
+
+##### POSTGRES_PASSWORD=phuc123
+
+##### POSTGRES_TEST_DB=store_test
+
+##### ENV=dev
+
+##### DB_PORT=5432
+
+##### TOKEN_SECRET=jsdiurwejsbb34534sfnf
 
 ## APIs
 
