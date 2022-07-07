@@ -33,11 +33,10 @@ Formating file , build and testing
 
 ## Database setup
 
-create database store_dev;
-create database store_test;
-create user phuc with password 'phuc123';
-grant all privileges on database store_dev to phuc;
-grant all privileges on database store_test to phuc;
+#### create database store_dev;
+#### create user phuc with password 'phuc123';
+#### grant all privileges on database store_dev to phuc;
+#### grant all privileges on database store_test to phuc;
 
 ## products table
 
@@ -75,16 +74,16 @@ product_id int REFERENCES products(id),
 quantity int
 );
 
-#### Environment
+## Environment
 
-POSTGRES_HOST=localhost
-POSTGRES_DB=store_dev
-POSTGRES_USER=phuc
-POSTGRES_PASSWORD=phuc123
-POSTGRES_TEST_DB=store_test
-ENV=dev
-DB_PORT=5432
-TOKEN_SECRET=jsdiurwejsbb34534sfnf
+#### POSTGRES_HOST=localhost
+#### POSTGRES_DB=store_dev
+#### POSTGRES_USER=phuc
+#### POSTGRES_PASSWORD=phuc123
+#### POSTGRES_TEST_DB=store_test
+#### ENV=dev
+#### DB_PORT=5432
+#### TOKEN_SECRET=jsdiurwejsbb34534sfnf
 
 #### APIs
 
