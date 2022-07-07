@@ -31,7 +31,7 @@ Formatting \*.ts files in project
 
 Formating file , build and testing
 
-#### Database setup
+## Database setup
 
 create database store_dev;
 create database store_test;
