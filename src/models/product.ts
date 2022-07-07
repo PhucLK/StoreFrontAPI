@@ -37,7 +37,6 @@ class ProductStore {
             conn.release()
 
             return result.rows[0]
-
         } catch (err) {
             throw new Error(`Could not find product ${id}. Error: ${err}`)
         }
@@ -47,7 +46,8 @@ class ProductStore {
         try {
             // @ts-ignore
             const conn = await client.connect()
-            const sql = 'INSERT INTO products (name, price, category) VALUES($1, $2, $3) RETURNING *'
+            const sql =
+                'INSERT INTO products (name, price, category) VALUES($1, $2, $3) RETURNING *'
 
             const result = await conn.query(sql, [p.name, p.price, p.category])
 
@@ -67,9 +67,9 @@ class ProductStore {
             const conn = await client.connect()
 
             const sql =
-                'select p.name,p.price,p.category,sum(o.quantity) as order_quantity' +
-                ' from products as p inner join orders o ' +
-                'on p.id=o.product_id group by p.id order by sum(o.quantity) desc limit 5'
+                'select p.name,p.price,p.category,sum(op.quantity) as order_quantity' +
+                ' from products as p inner join order_products op ' +
+                'on p.id=op.product_id group by p.id order by sum(op.quantity) desc limit 5'
 
             const result = await conn.query(sql)
 

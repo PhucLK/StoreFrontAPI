@@ -1,67 +1,63 @@
-import { Order, OrderStore } from '../models/order'
+import { Order_ProductStore } from '../models/order_product'
+import supertest from 'supertest'
+import app from '../index'
+import { User, UserStore } from '../models/user'
 
-const store = new OrderStore()
+const userStore = new UserStore()
+const store = new Order_ProductStore()
 
-const orders: Order[] = [
-    {
-        id: 1,
-        quantity: 1,
-        status: 'completed',
-        product_id: 1,
-        user_id: 1
-    }
+const user: User = {
+    id: 1,
+    firstname: 'phuc',
+    lastname: 'tran',
+    username: 'phuc',
+    password: 'phuc123'
+}
+
+describe('Test order endpoint responses', () => {
+    let token: string
+    beforeAll(async () => {
+        const [_newUser, token_] = await userStore.create(user)
+        token = token_
+    })
+
+    it('gets the /orders enpoint', (done: Function) => {
+        supertest(app)
+            .get('/orders')
+            .set('authorization', 'Toke ' + token)
+            .then((result) => {
+                expect(result.status).toBe(200)
+            })
+        done()
+    })
+    it('gets the /completedorders enpoint', (done: Function) => {
+        supertest(app)
+            .get('/completedorders')
+            .set('authorization', 'Toke ' + token)
+            .then((result) => {
+                expect(result.status).toBe(200)
+            })
+        done()
+    })
+})
+
+const userOrders: Object[] = [
+    { id: 1, name: 'Summer 1', quantity: 1, status: 'completed' },
+    { id: 2, name: 'Summer 2', quantity: 3, status: 'active' },
+    { id: 3, name: 'Summer 3', quantity: 5, status: 'completed' },
+    { id: 4, name: 'Summer 4', quantity: 2, status: 'completed' },
+    { id: 5, name: 'Summer 5', quantity: 6, status: 'completed' },
+    { id: 6, name: 'Summer 5', quantity: 1, status: 'completed' },
+    { id: 7, name: 'Summer 2', quantity: 4, status: 'completed' }
 ]
 
-const completedOrder: Order[] = [
-    {
-        id: 1,
-        quantity: 1,
-        status: 'completed',
-        product_id: 1,
-        user_id: 1
-    },
-    {
-        id: 2,
-        quantity: 2,
-        status: 'completed',
-        product_id: 2,
-        user_id: 1
-    },
-    {
-        id: 3,
-        quantity: 3,
-        status: 'completed',
-        product_id: 3,
-        user_id: 1
-    },
-    {
-        id: 4,
-        quantity: 4,
-        status: 'completed',
-        product_id: 4,
-        user_id: 1
-    },
-    {
-        id: 5,
-        quantity: 5,
-        status: 'completed',
-        product_id: 5,
-        user_id: 1
-    },
-    {
-        id: 6,
-        quantity: 5,
-        status: 'completed',
-        product_id: 5,
-        user_id: 1
-    },
-    {
-        id: 7,
-        quantity: 6,
-        status: 'completed',
-        product_id: 6,
-        user_id: 1
-    }
+const completedOrder: Object[] = [
+    { id: 1, name: 'Summer 1', quantity: 1 },
+    { id: 3, name: 'Summer 3', quantity: 5 },
+    { id: 4, name: 'Summer 4', quantity: 2 },
+    { id: 5, name: 'Summer 5', quantity: 6 },
+    { id: 6, name: 'Summer 5', quantity: 1 },
+    { id: 7, name: 'Summer 2', quantity: 4 }
 ]
 
 describe('Order Model', () => {
@@ -75,7 +71,7 @@ describe('Order Model', () => {
 
     it('orderByUser method should return a list of orders by user', async () => {
         const result = await store.orderByUser(1)
-        expect(result).toEqual(completedOrder)
+        expect(result).toEqual(userOrders)
     })
 
     it('completedOrders method should return list of completed orders by user', async () => {

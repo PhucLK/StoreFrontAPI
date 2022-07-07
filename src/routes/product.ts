@@ -7,7 +7,9 @@ const store = new ProductStore()
 const index = async (_req: Request, res: Response) => {
     try {
         const products = await store.index()
-        products.length > 0 ? res.json(products) : res.json({ 'message': 'Can not find any products' })
+        products.length > 0
+            ? res.json(products)
+            : res.json({ message: 'Can not find any products' })
     } catch (error: any) {
         res.status(500)
         res.json(error.toString())
@@ -17,7 +19,7 @@ const index = async (_req: Request, res: Response) => {
 const show = async (req: Request, res: Response) => {
     try {
         const product = await store.show(req.params.id)
-        product ? res.json(product) : res.json({ 'message': 'Can not find product' })
+        product ? res.json(product) : res.json({ message: 'Can not find product' })
     } catch (error: any) {
         res.status(500)
         res.json(error.toString())
@@ -27,7 +29,9 @@ const show = async (req: Request, res: Response) => {
 const popularProducts = async (req: Request, res: Response) => {
     try {
         const products = await store.popularProducts()
-        products.length > 0 ? res.json(products) : res.json({ 'message': 'Can not find any products' })
+        products.length > 0
+            ? res.json(products)
+            : res.json({ message: 'Can not find any products' })
     } catch (error: any) {
         res.status(500)
         res.json(error.toString())
@@ -37,7 +41,9 @@ const popularProducts = async (req: Request, res: Response) => {
 const productByCategory = async (req: Request, res: Response) => {
     try {
         const products = await store.productByCategory(req.params.category)
-        products.length > 0 ? res.json(products) : res.json({ 'message': 'Can not find any products' })
+        products.length > 0
+            ? res.json(products)
+            : res.json({ message: 'Can not find any products' })
     } catch (error: any) {
         res.status(500)
         res.json(error.toString())
