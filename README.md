@@ -85,49 +85,49 @@ quantity int
 #### DB_PORT=5432
 #### TOKEN_SECRET=jsdiurwejsbb34534sfnf
 
-#### APIs
+## APIs
 
-## Get all products :
+### Get all products :
 
 GET : http://localhost:3000/products
 
-## Create new a product :
+### Create new a product :
 
 POST : http://localhost:3000/products
 (Token Required)
 
-## Get detail product :
+### Get detail product :
 
 GET : http://localhost:3000/products/:id
 
-## Get popular products :
+### Get popular products :
 
 GET : http://localhost:3000/popular
 
-## Get products by category :
+### Get products by category :
 
 GET : http://localhost:3000/category/:category
 
-## Get all orders by user :
+### Get all orders by user :
 
 GET : http://localhost:3000/orders
 (Token Required)
 
-## Get completed orders :
+### Get completed orders :
 
 GET : http://localhost:3000/completedorders
 (Token Required)
 
-## Get all users :
+### Get all users :
 
 GET : http://localhost:3000/users
 (Token Required)
 
-## Get a detail user :
+### Get a detail user :
 
 GET : http://localhost:3000/users/:id
 (Token Required)
 
-## Create new user :
+### Create new user :
 
 POST : http://localhost:3000/users
