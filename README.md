@@ -38,6 +38,8 @@ In the project directory, you can run:
 
 #### create database store_dev;
 
+#### create database store_test;
+
 #### create user phuc with password 'phuc123';
 
 #### grant all privileges on database store_dev to phuc;
